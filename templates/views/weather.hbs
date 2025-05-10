@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   {{>headLinks}}
+</head>
+<body>
+   {{>navbar}}
+    <!-- main header -->
+    <div class="container-fluid main_header">
+        <div class="row">
+            <div class="col-md-10 col-12 mx-auto">
+              <div class="main_content">
+                <form class="temp_form">
+                    <input type="text" id="cityName" placeholder="Enter Your city name" autocomplete="off">
+                     <input type="submit" value="search" id="submitBtn">
+                </form>
+              </div>
+
+              <div class="tempInformation">
+                <div class="top_layer">
+                <p id="day">Tuesday</p>
+                <p id="today_date">4th May</p>
+                </div>
+                <div class="main_layer">
+                    <p id="city_name">Get output Here</p>
+                    <div class="middle_layer data_hide">
+                     <p id="temp"><span id="temp_real">0</span><sup>o</sup>C</p>   
+                     <p id="temp_status"><i class="fa fa-cloud" aria-hidden="true"></i></p>
+                    </div>
+                </div>
+              </div>
+            </div>
+        </div>
+    </div>
+    <!-- footer section -->
+     {{>footer}}
+     <script src="js/main.js"></script>
+     <script>
+  const getCurrentDay = () => {
+    const weekday = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    const currentTime = new Date();
+    const dayName = weekday[currentTime.getDay()];
+    document.getElementById("day").innerHTML = dayName;
+  };
+
+  const getCurrentDate = () => {
+    const now = new Date();
+    const date = now.getDate();
+    const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
+                        "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+    const month = monthNames[now.getMonth()];
+    const fullDate = `${date} ${month}`;
+    document.getElementById("today_date").innerHTML = fullDate;
+  };
+
+  getCurrentDay();
+  getCurrentDate();
+</script>
+
+</body>
+</html>
